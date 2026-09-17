@@ -157,6 +157,13 @@
       color: var(--text-color);
     }
 
+    /* Contenedor reproductor de Spotify */
+    .spotify-container {
+      margin-top: 1rem;
+      border-radius: 12px;
+      overflow: hidden;
+    }
+
     /* Badge de disponibilidad */
     .status-badge {
       display: inline-flex;
@@ -288,6 +295,26 @@
       </ul>
     </section>
 
+    <!-- Sección Reproductor Spotify -->
+    <section>
+      <h2 data-en="Music & Culture" data-et="Muusika ja kultuur">Music & Culture</h2>
+      <p data-en="Listen along to tune your ear to Spanish and get into the vibe."
+         data-et="Kuula kaasa, et harjutada kõrva hispaania keelega ja tunda õiget meeleolu.">
+        Listen along to tune your ear to Spanish and get into the vibe.
+      </p>
+      <div class="spotify-container">
+        <iframe style="border-radius:12px" 
+                src="https://open.spotify.com/embed/playlist/6qv68QBGb4BKfLUb92MSik?utm_source=generator&theme=0" 
+                width="100%" 
+                height="152" 
+                frameBorder="0" 
+                allowfullscreen="" 
+                allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" 
+                loading="lazy">
+        </iframe>
+      </div>
+    </section>
+
     <section>
       <h2 data-en="Book a Session" data-et="Broneeri tund">Book a Session</h2>
       <div class="status-badge">
@@ -323,7 +350,7 @@
   </main>
 
   <footer>
-    <p>© 2026 Mate in Estonia by Lucas Maiorov.</p>
+    <p>© 2026 Mate in Estonia.</p>
     <p class="meta" data-en="Tallinn, Estonia" data-et="Tallinn, Eesti">Tallinn, Estonia</p>
   </footer>
 
