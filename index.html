@@ -157,9 +157,15 @@
       color: var(--text-color);
     }
 
-    /* Contenedores multimedia (Spotify / Podcast) */
-    .media-container {
+    /* Contenedores multimedia */
+    .podcast-container {
       margin-top: 1rem;
+      min-height: 120px;
+    }
+
+    .spotify-container {
+      margin-top: 1rem;
+      height: 80px;
       border-radius: 12px;
       overflow: hidden;
     }
@@ -295,21 +301,16 @@
       </ul>
     </section>
 
-    <!-- Sección del Podcast (RedCircle Reproductor Compacto) -->
+    <!-- Sección del Podcast (Widget oficial de RedCircle) -->
     <section>
       <h2 data-en="Podcast" data-et="Podcast">Podcast</h2>
       <p data-en="Listen to episodes on culture, stories, and language insights bridging Argentina and Estonia."
          data-et="Kuula episoode kultuurist, lugudest ja keelenõuannetest Argentina ja Eesti vahel.">
         Listen to episodes on culture, stories, and language insights bridging Argentina and Estonia.
       </p>
-      <div class="media-container">
-        <iframe src="https://embed.podcasts.com/d4f422ea-0e0f-4fcf-8e7d-f9fb48505a60" 
-                height="180" 
-                width="100%" 
-                frameborder="0" 
-                scrolling="no" 
-                style="border-radius: 12px; border: 1px solid var(--border-color);">
-        </iframe>
+      <div class="podcast-container">
+        <div class="redcirclePlayer-d4f422ea-0e0f-4fcf-8e7d-f9fb48505a60"></div>
+        <script src="https://api.podcasts.com/ref/s/d4f422ea-0e0f-4fcf-8e7d-f9fb48505a60/feed.js" async></script>
       </div>
       <p style="margin-top: 0.75rem; font-size: 0.88rem;">
         <a href="https://redcircle.com/shows/d4f422ea-0e0f-4fcf-8e7d-f9fb48505a60" target="_blank" 
@@ -320,18 +321,18 @@
       </p>
     </section>
 
-    <!-- Sección Reproductor Spotify -->
+    <!-- Sección Reproductor Spotify ajustado a 80px -->
     <section>
       <h2 data-en="Music & Culture" data-et="Muusika ja kultuur">Music & Culture</h2>
       <p data-en="Listen along to tune your ear to Spanish and get into the vibe."
          data-et="Kuula kaasa, et harjutada kõrva hispaania keelega ja tunda õiget meeleolu.">
         Listen along to tune your ear to Spanish and get into the vibe.
       </p>
-      <div class="media-container">
-        <iframe style="border-radius: 12px; border: 1px solid var(--border-color);" 
+      <div class="spotify-container">
+        <iframe style="border: 0; display: block;" 
                 src="https://open.spotify.com/embed/playlist/6qv68QBGb4BKfLUb92MSik?utm_source=generator&theme=0" 
                 width="100%" 
-                height="152" 
+                height="80" 
                 frameBorder="0" 
                 allowfullscreen="" 
                 allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" 
