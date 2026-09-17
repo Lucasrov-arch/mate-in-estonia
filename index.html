@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mate in Estonia — Spanish Language Coaching</title>
+  <style>
+    :root {
+      --bg-color: #fcfcfc;
+      --text-color: #1a1a1a;
+      --text-muted: #666666;
+      --border-color: #e5e5e5;
+      --font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      font-family: var(--font-family);
+      line-height: 1.6;
+      padding: 2.5rem 1.5rem;
+      max-width: 680px;
+      margin: 0 auto;
+    }
+
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 3.5rem;
+    }
+
+    .brand {
+      font-size: 1.1rem;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+    }
+
+    .lang-switch {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+
+    .lang-switch button {
+      background: none;
+      border: none;
+      font-family: inherit;
+      font-size: inherit;
+      color: var(--text-muted);
+      cursor: pointer;
+      padding: 0 2px;
+    }
+
+    .lang-switch button.active {
+      color: var(--text-color);
+      font-weight: 600;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+
+    section {
+      margin-bottom: 3rem;
+    }
+
+    h2 {
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--text-muted);
+      margin-bottom: 1rem;
+      font-weight: 500;
+    }
+
+    p {
+      font-size: 1.05rem;
+      margin-bottom: 1rem;
+    }
+
+    ul {
+      list-style: none;
+    }
+
+    li {
+      margin-bottom: 0.85rem;
+      font-size: 1rem;
+    }
+
+    .meta {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    a {
+      color: var(--text-color);
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+
+    a:hover {
+      color: var(--text-muted);
+    }
+
+    .contact-links {
+      display: flex;
+      gap: 1.25rem;
+      margin-top: 1rem;
+    }
+
+    footer {
+      margin-top: 4rem;
+      padding-top: 2rem;
+      border-top: 1px solid var(--border-color);
+      color: var(--text-muted);
+      font-size: 0.85rem;
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <div class="brand">Mate in Estonia</div>
+    <div class="lang-switch">
+      <button id="btn-en" class="active" onclick="setLanguage('en')">EN</button>
+      <span>|</span>
+      <button id="btn-et" onclick="setLanguage('et')">ET</button>
+    </div>
+  </nav>
+
+  <main>
+    <section>
+      <h2 data-en="About" data-et="Meist">About</h2>
+      <p data-en="Spanish language coaching & conversation practice in Tallinn and online."
+         data-et="Hispaania keele õpe ja vestluspraktika Tallinnas ning veebis.">
+        Spanish language coaching & conversation practice in Tallinn and online.
+      </p>
+      <p data-en="Personalized 1-on-1 lessons tailored for real conversation, practical grammar, and cultural immersion."
+         data-et="Personaalsed eratunnid, mis on kohandatud reaalseteks vestlusteks, praktiliseks grammatikaks ja kultuuriliseks süvenemiseks.">
+        Personalized 1-on-1 lessons tailored for real conversation, practical grammar, and cultural immersion.
+      </p>
+    </section>
+
+    <section>
+      <h2 data-en="Offerings" data-et="Teenused">Offerings</h2>
+      <ul>
+        <li>
+          <strong data-en="1-on-1 Coaching" data-et="Eratunnid 1-on-1">1-on-1 Coaching</strong> 
+          <span class="meta" data-en="— Structured lessons tailored to your specific goals and pace." data-et="— Teie eesmärkidele ja tempole kohandatud struktureeritud tunnid.">— Structured lessons tailored to your specific goals and pace.</span>
+        </li>
+        <li>
+          <strong data-en="Conversation Club" data-et="Vestlusklubi">Conversation Club</strong> 
+          <span class="meta" data-en="— Small group sessions focused on natural speaking flow and confidence." data-et="— Väikesed grupitunnid sujuva keelekasutuse ja enesekindluse saavutamiseks.">— Small group sessions focused on natural speaking flow and confidence.</span>
+        </li>
+      </ul>
+    </section>
+
+    <section>
+      <h2 data-en="Get in Touch" data-et="Võta ühendust">Get in Touch</h2>
+      <p data-en="Ready to start or have questions about session availability?"
+         data-et="Oled valmis alustama või on sul küsimusi vabadest aegadest?">
+        Ready to start or have questions about session availability?
+      </p>
+      <div class="contact-links">
+        <a href="mailto:hola@mateinestonia.ee" data-en="Email" data-et="E-post">Email</a>
+        <a href="https://t.me/tu_usuario" target="_blank">Telegram</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>© 2026 Mate in Estonia.</p>
+  </footer>
+
+  <script>
+    function setLanguage(lang) {
+      document.querySelectorAll('[data-en]').forEach(el => {
+        el.textContent = el.getAttribute(`data-${lang}`);
+      });
+
+      document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+      document.getElementById('btn-et').classList.toggle('active', lang === 'et');
+      document.documentElement.lang = lang;
+    }
+  </script>
+
+</body>
+</html>
