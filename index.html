@@ -160,7 +160,10 @@
     /* Contenedores multimedia */
     .podcast-container {
       margin-top: 1rem;
-      min-height: 120px;
+      height: 190px;
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid var(--border-color);
     }
 
     .spotify-container {
@@ -301,7 +304,7 @@
       </ul>
     </section>
 
-    <!-- Sección del Podcast (Widget oficial de RedCircle) -->
+    <!-- Sección del Podcast (Iframe Directo) -->
     <section>
       <h2 data-en="Podcast" data-et="Podcast">Podcast</h2>
       <p data-en="Listen to episodes on culture, stories, and language insights bridging Argentina and Estonia."
@@ -309,8 +312,14 @@
         Listen to episodes on culture, stories, and language insights bridging Argentina and Estonia.
       </p>
       <div class="podcast-container">
-        <div class="redcirclePlayer-d4f422ea-0e0f-4fcf-8e7d-f9fb48505a60"></div>
-        <script src="https://api.podcasts.com/ref/s/d4f422ea-0e0f-4fcf-8e7d-f9fb48505a60/feed.js" async></script>
+        <iframe src="https://api.podcasts.com/ref/s/d4f422ea-0e0f-4fcf-8e7d-f9fb48505a60/embed" 
+                width="100%" 
+                height="190" 
+                frameborder="0" 
+                scrolling="no" 
+                style="border: 0; display: block;" 
+                loading="lazy">
+        </iframe>
       </div>
       <p style="margin-top: 0.75rem; font-size: 0.88rem;">
         <a href="https://redcircle.com/shows/d4f422ea-0e0f-4fcf-8e7d-f9fb48505a60" target="_blank" 
@@ -321,7 +330,7 @@
       </p>
     </section>
 
-    <!-- Sección Reproductor Spotify ajustado a 80px -->
+    <!-- Sección Reproductor Spotify -->
     <section>
       <h2 data-en="Music & Culture" data-et="Muusika ja kultuur">Music & Culture</h2>
       <p data-en="Listen along to tune your ear to Spanish and get into the vibe."
