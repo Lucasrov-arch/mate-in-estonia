@@ -125,6 +125,59 @@
       font-size: 0.92rem;
     }
 
+    /* Módulo dinámico de la frase del día */
+    .phrase-card {
+      border-left: 2px solid var(--text-color);
+      padding-left: 1.25rem;
+      margin-top: 0.5rem;
+    }
+
+    .phrase-title {
+      font-family: var(--font-serif);
+      font-size: 1.25rem;
+      font-weight: 600;
+      margin-bottom: 0.25rem;
+    }
+
+    .btn-refresh {
+      background: none;
+      border: none;
+      font-family: var(--font-sans);
+      color: var(--text-muted);
+      cursor: pointer;
+      font-size: 0.85rem;
+      padding: 0;
+      margin-top: 0.75rem;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      transition: color 0.2s ease;
+    }
+
+    .btn-refresh:hover {
+      color: var(--text-color);
+    }
+
+    /* Badge de disponibilidad */
+    .status-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 0.85rem;
+      color: #2d7d46;
+      background-color: #f0fdf4;
+      padding: 0.2rem 0.6rem;
+      border-radius: 999px;
+      margin-bottom: 1rem;
+      font-weight: 500;
+    }
+
+    .status-dot {
+      width: 7px;
+      height: 7px;
+      background-color: #22c55e;
+      border-radius: 50%;
+    }
+
     a {
       color: var(--text-color);
       text-decoration: underline;
@@ -171,7 +224,7 @@
 
   <main>
     <section>
-      <h2 data-en="About:" data-et="Meist:">About</h2>
+      <h2 data-en="About" data-et="Meist">About</h2>
       <p data-en="Spanish language coaching & conversation practice in Tallinn and online."
          data-et="Hispaania keele õpe ja vestluspraktika Tallinnas ning veebis.">
         Spanish language coaching & conversation practice in Tallinn and online.
@@ -182,8 +235,24 @@
       </p>
     </section>
 
+    <!-- Módulo interactivo: Expresión / Frase del día -->
     <section>
-      <h2 data-en="Offerings:" data-et="Teenused:">Offerings</h2>
+      <h2 data-en="Argentine Word of the Day" data-et="Päeva Argentina sõna">Argentine Word of the Day</h2>
+      <div class="phrase-card">
+        <div id="phrase-text" class="phrase-title">«¡Che!»</div>
+        <p id="phrase-desc" class="meta" 
+           data-en="Used to get someone's attention or address a friend (like 'hey' or 'mate')."
+           data-et="Kasutatakse kellegi tähelepanu tõmbamiseks või sõbra poole pöördumiseks.">
+          Used to get someone's attention or address a friend (like 'hey' or 'mate').
+        </p>
+        <button class="btn-refresh" onclick="nextPhrase()" data-en="Discover another word ↻" data-et="Avasta teine sõna ↻">
+          Discover another word ↻
+        </button>
+      </div>
+    </section>
+
+    <section>
+      <h2 data-en="Offerings" data-et="Teenused">Offerings</h2>
       <ul>
         <li>
           <strong data-en="1-on-1 Coaching" data-et="Eratunnid 1-on-1">1-on-1 Coaching</strong> 
@@ -197,7 +266,11 @@
     </section>
 
     <section>
-      <h2 data-en="Get in Touch:" data-et="Võta ühendust:">Get in Touch</h2>
+      <h2 data-en="Get in Touch" data-et="Võta ühendust">Get in Touch</h2>
+      <div class="status-badge">
+        <span class="status-dot"></span>
+        <span data-en="Accepting new students in Tallinn & Online" data-et="Võtan vastu uusi õpilasi Tallinnas ja veebis">Accepting new students in Tallinn & Online</span>
+      </div>
       <p data-en="Ready to start or have questions about session availability?"
          data-et="Oled valmis alustama või on sul küsimusi vabadest aegadest?">
         Ready to start or have questions about session availability?
@@ -210,12 +283,61 @@
   </main>
 
   <footer>
-    <p>© 2026 Mate in Estonia by Lucas Maiorov.</p>
+    <p>© 2026 Mate in Estonia.</p>
     <p class="meta" data-en="Tallinn, Estonia" data-et="Tallinn, Eesti">Tallinn, Estonia</p>
   </footer>
 
   <script>
+    // Idioma actual
+    let currentLang = 'en';
+
+    // Banco de expresiones dinámicas (EN + ET)
+    const phrases = [
+      {
+        text: "«¡Che!»",
+        en: "Used to get someone's attention or address a friend (like 'hey' or 'mate').",
+        et: "Kasutatakse kellegi tähelepanu tõmbamiseks või sõbra poole pöördumiseks."
+      },
+      {
+        text: "«¿Todo bien?»",
+        en: "The standard casual greeting. Used as both 'How's it going?' and 'Everything is good!'",
+        et: "Tavaline mitteametlik tervitus. Kasutatakse nii 'Kuidas läheb?' kui ka 'Kõik on hästi!'"
+      },
+      {
+        text: "«Mate»",
+        en: "Traditional South American caffeine-rich herbal tea, shared among friends in a circle.",
+        et: "Lõuna-Ameerika traditsiooniline kofeiinirikas taimetee, mida jagatakse sõprade ringis."
+      },
+      {
+        text: "«Posta»",
+        en: "Means 'Really?' or 'For real!' depending on the tone.",
+        et: "Tähendab 'Päriselt?' või 'Tõesti!', olenevalt toonist."
+      },
+      {
+        text: "«¿Cómo andás?»",
+        en: "The typical Argentine way to ask 'How are you?'. It uses 'voseo' (andás).",
+        et: "Tüüpiline Argentina viis küsida 'Kuidas sul läheb?'. Kasutab 'voseo' vormi (andás)."
+      }
+    ];
+
+    let currentPhraseIndex = 0;
+
+    function nextPhrase() {
+      currentPhraseIndex = (currentPhraseIndex + 1) % phrases.length;
+      updatePhraseDisplay();
+    }
+
+    function updatePhraseDisplay() {
+      const p = phrases[currentPhraseIndex];
+      document.getElementById('phrase-text').textContent = p.text;
+      const descEl = document.getElementById('phrase-desc');
+      descEl.setAttribute('data-en', p.en);
+      descEl.setAttribute('data-et', p.et);
+      descEl.textContent = p[currentLang];
+    }
+
     function setLanguage(lang) {
+      currentLang = lang;
       document.querySelectorAll('[data-en]').forEach(el => {
         el.textContent = el.getAttribute(`data-${lang}`);
       });
@@ -223,6 +345,9 @@
       document.getElementById('btn-en').classList.toggle('active', lang === 'en');
       document.getElementById('btn-et').classList.toggle('active', lang === 'et');
       document.documentElement.lang = lang;
+      
+      // Actualizar la frase visible al cambiar idioma
+      updatePhraseDisplay();
     }
   </script>
 
