@@ -178,6 +178,29 @@
       border-radius: 50%;
     }
 
+    /* Botón de reserva destacado */
+    .booking-box {
+      margin: 1.5rem 0 2rem 0;
+    }
+
+    .btn-book {
+      display: inline-block;
+      background-color: var(--text-color);
+      color: #ffffff;
+      padding: 0.75rem 1.25rem;
+      border-radius: 6px;
+      font-size: 0.95rem;
+      font-weight: 500;
+      text-decoration: none;
+      transition: background-color 0.2s ease, transform 0.1s ease;
+    }
+
+    .btn-book:hover {
+      background-color: #333333;
+      color: #ffffff;
+      text-decoration: none;
+    }
+
     a {
       color: var(--text-color);
       text-decoration: underline;
@@ -266,14 +289,31 @@
     </section>
 
     <section>
-      <h2 data-en="Get in Touch" data-et="Võta ühendust">Get in Touch</h2>
+      <h2 data-en="Book a Session" data-et="Broneeri tund">Book a Session</h2>
       <div class="status-badge">
         <span class="status-dot"></span>
         <span data-en="Accepting new students in Tallinn & Online" data-et="Võtan vastu uusi õpilasi Tallinnas ja veebis">Accepting new students in Tallinn & Online</span>
       </div>
-      <p data-en="Ready to start or have questions about session availability?"
-         data-et="Oled valmis alustama või on sul küsimusi vabadest aegadest?">
-        Ready to start or have questions about session availability?
+      <p data-en="Select a time slot that suits you best for an introductory lesson or regular session."
+         data-et="Vali endale sobiv aeg tutvumistunniks või tavatunniks.">
+        Select a time slot that suits you best for an introductory lesson or regular session.
+      </p>
+
+      <!-- Botón directo al Google Form -->
+      <div class="booking-box">
+        <a href="https://forms.gle/ZksmJbAsaL7icvXr5" target="_blank" class="btn-book" 
+           data-en="Book Date & Time →" 
+           data-et="Broneeri kuupäev ja kellaaeg →">
+          Book Date & Time →
+        </a>
+      </div>
+    </section>
+
+    <section>
+      <h2 data-en="Get in Touch" data-et="Võta ühendust">Get in Touch</h2>
+      <p data-en="Have questions before booking?"
+         data-et="Kas sul on küsimusi enne broneerimist?">
+        Have questions before booking?
       </p>
       <div class="contact-links">
         <a href="mailto:cheprofeestonia@gmail.com" data-en="Email" data-et="E-post">Email</a>
